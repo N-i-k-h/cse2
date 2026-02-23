@@ -1,0 +1,175 @@
+```
+SIET CSE ERP - Database Schema (3NF)
+=====================================
+
+┌─────────────────┐
+│  departments    │
+├─────────────────┤
+│ id (PK)         │
+│ name            │
+│ code            │
+│ created_at      │
+│ updated_at      │
+└────────┬────────┘
+         │
+         │ 1:N
+         │
+┌────────▼────────┐
+│     users       │
+├─────────────────┤
+│ id (PK)         │
+│ email (UNIQUE)  │
+│ password_hash   │
+│ role (ENUM)     │
+│ department_id   │◄──┐
+│ is_active       │   │
+│ created_at      │   │
+│ updated_at      │   │
+└────────┬────────┘   │
+         │            │
+    ┌────┴────┐       │
+    │         │       │
+    │ 1:1     │ 1:1   │
+    │         │       │
+┌───▼──────┐ ┌▼──────▼────┐
+│ faculty  │ │  students   │
+├──────────┤ ├─────────────┤
+│ id (PK)  │ │ id (PK)     │
+│ user_id  │ │ user_id     │
+│ first_   │ │ usn (UNIQUE)│
+│  name    │ │ first_name  │
+│ last_    │ │ last_name   │
+│  name    │ │ phone       │
+│ phone    │ │ parent_name │
+│ pan      │ │ parent_     │
+│ aadhaar  │ │  phone      │
+│ designa- │ │ year        │
+│  tion    │ │ semester    │
+│ highest_ │ │ section     │
+│  degree  │ │ created_at  │
+│ experien-│ │ updated_at  │
+│  ce_*    │ └──────┬──────┘
+│ created_ │        │
+│  at      │        │ N:M
+│ updated_ │        │
+│  at      │   ┌────▼─────────┐
+└────┬─────┘   │ enrollments  │
+     │         ├──────────────┤
+     │         │ id (PK)      │
+     │         │ student_id   │
+     │         │ class_id     │
+     │         │ enrolled_    │
+     │         │  date        │
+     │         │ status       │
+     │         │ created_at   │
+     │         └──────┬───────┘
+     │                │
+     │ 1:N            │ N:1
+     │                │
+┌────▼──────────┐ ┌──▼─────────┐
+│   classes     │◄┤            │
+├───────────────┤ │            │
+│ id (PK)       │ │            │
+│ name          │ │            │
+│ year          │ │            │
+│ semester      │ │            │
+│ section       │ │            │
+│ room_number   │ │            │
+│ class_        │ │            │
+│  teacher_id   │─┘            │
+│ department_id │              │
+│ created_at    │              │
+│ updated_at    │              │
+└───────┬───────┘              │
+        │                      │
+        │ 1:N                  │
+        │                      │
+┌───────▼──────────┐           │
+│    timetable     │           │
+├──────────────────┤           │
+│ id (PK)          │           │
+│ class_id         │           │
+│ day_of_week      │           │
+│ period_number    │           │
+│ subject          │           │
+│ faculty_id       │───────────┘
+│ room_number      │
+│ created_at       │
+│ updated_at       │
+└────────┬─────────┘
+         │
+         │ 1:N
+         │
+┌────────▼─────────┐
+│   attendance     │
+├──────────────────┤
+│ id (PK)          │
+│ student_id       │──┐
+│ timetable_id     │  │
+│ date             │  │
+│ status (ENUM)    │  │
+│ marked_by        │  │
+│ created_at       │  │
+└──────────────────┘  │
+                      │
+                      │
+         ┌────────────┘
+         │
+┌────────▼─────────┐
+│      marks       │
+├──────────────────┤
+│ id (PK)          │
+│ student_id       │
+│ subject          │
+│ exam_type (ENUM) │
+│ marks_obtained   │
+│ max_marks        │
+│ exam_date        │
+│ created_at       │
+│ updated_at       │
+└──────────────────┘
+
+
+RELATIONSHIPS:
+==============
+departments 1:N users
+users 1:1 faculty
+users 1:1 students
+faculty 1:N classes (as class_teacher)
+classes 1:N timetable
+classes N:M students (via enrollments)
+faculty 1:N timetable
+timetable 1:N attendance
+students 1:N attendance
+students 1:N marks
+
+
+INDEXES:
+========
+- All primary keys (auto-indexed)
+- users.email (UNIQUE)
+- students.usn (UNIQUE)
+- classes(year, semester, section, department_id) (UNIQUE)
+- enrollments(student_id, class_id) (UNIQUE)
+- timetable(class_id, day_of_week, period_number) (UNIQUE)
+- attendance(student_id, timetable_id, date) (UNIQUE)
+
+
+ENUMS:
+======
+users.role: 'admin', 'hod', 'staff', 'student'
+faculty.designation: 'Professor', 'Associate Professor', 'Assistant Professor', 'Lecturer', 'HOD'
+faculty.highest_degree: 'PhD', 'M.Tech', 'M.Sc', 'B.Tech', 'Other'
+enrollments.status: 'active', 'inactive', 'transferred'
+timetable.day_of_week: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+attendance.status: 'present', 'absent', 'late'
+marks.exam_type: 'midterm', 'lab', 'assignment', 'final'
+
+
+CASCADE OPERATIONS:
+===================
+DELETE users → CASCADE delete faculty/students
+DELETE classes → CASCADE delete enrollments, timetable
+DELETE students → CASCADE delete enrollments, attendance, marks
+DELETE timetable → CASCADE delete attendance
+```

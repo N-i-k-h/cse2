@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "699be54225f809657b4d8d96",
+    "classId": "699bc30473deb9fbb7b002d0",
+    "day": "Monday",
+    "period": 6,
+    "subject": "ggg",
+    "facultyId": "699be3561271a699a0df0e11",
+    "roomNumber": "99",
+    "createdAt": "2026-02-23T05:27:30.595Z",
+    "__v": 0
+  },
+  {
+    "_id": "699be451dd7737a89b239d4d",
+    "classId": "699bc30473deb9fbb7b002d0",
+    "day": "Monday",
+    "period": 5,
+    "subject": "nkkk",
+    "facultyId": "699be3561271a699a0df0e11",
+    "roomNumber": "44",
+    "createdAt": "2026-02-23T05:23:29.646Z",
+    "__v": 0
+  },
+  {
+    "_id": "699be3701271a699a0df0e20",
+    "classId": "699bc30473deb9fbb7b002d0",
+    "day": "Monday",
+    "period": 2,
+    "subject": "cnn",
+    "facultyId": "699be3561271a699a0df0e11",
+    "roomNumber": "104",
+    "createdAt": "2026-02-23T05:19:44.386Z",
+    "__v": 0
+  },
+  {
+    "_id": "699be2a91271a699a0df0e02",
+    "classId": "699bc30473deb9fbb7b002d0",
+    "day": "Monday",
+    "period": 4,
+    "subject": "cn",
+    "facultyId": "699bc08d73deb9fbb7b00275",
+    "roomNumber": "204",
+    "createdAt": "2026-02-23T05:16:25.737Z",
+    "__v": 0
+  },
+  {
+    "_id": "699bdf2f1927313065654315",
+    "classId": "699bc30473deb9fbb7b002d0",
+    "day": "Monday",
+    "period": 3,
+    "subject": "cn",
+    "facultyId": "699bc08d73deb9fbb7b00275",
+    "roomNumber": "204",
+    "createdAt": "2026-02-23T05:01:35.710Z",
+    "__v": 0
+  }
+]

@@ -1,0 +1,147 @@
+/* ============================================================
+   SIET CSE – Global Responsive Utilities
+   ============================================================ */
+
+/* ── Smooth scrolling ── */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ── Touch-friendly tap targets on mobile ── */
+@media (max-width: 640px) {
+
+    button,
+    a,
+    select,
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-height: 44px;
+    }
+
+    select {
+        min-height: 44px;
+        padding: 0 0.75rem;
+    }
+}
+
+/* ── Container padding ── */
+.container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* ── Responsive tables: horizontal scroll on small screens ── */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap table {
+    min-width: 600px;
+}
+
+.table-wrap thead th,
+.table-wrap tbody td {
+    white-space: nowrap;
+}
+
+/* ── Card ── */
+.card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden;
+}
+
+/* ── Responsive text helpers ── */
+.text-responsive-xl {
+    @apply text-lg sm:text-xl lg:text-2xl;
+}
+
+.text-responsive-lg {
+    @apply text-base sm:text-lg lg:text-xl;
+}
+
+.text-responsive-base {
+    @apply text-sm sm:text-base;
+}
+
+/* ── Page header (title + action button) ── */
+.page-header {
+    @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6;
+}
+
+/* ── Filter bar ── */
+.filter-bar {
+    @apply flex flex-col sm:flex-row gap-3 items-stretch sm:items-center flex-wrap;
+}
+
+/* ── Section spacing ── */
+.section-padding {
+    @apply p-4 sm:p-6 lg:p-8;
+}
+
+.section-margin {
+    @apply space-y-4 sm:space-y-6;
+}
+
+/* ── Sidebar overlay on mobile ── */
+@media (max-width: 1023px) {
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        z-index: 40;
+    }
+}
+
+/* ── Modal: full-screen on very small phones ── */
+@media (max-width: 475px) {
+    .modal-box {
+        border-radius: 0 !important;
+        max-height: 100dvh !important;
+        margin: 0 !important;
+    }
+}
+
+/* ── Responsive grid helpers (used in JSX via className) ── */
+/* These just document intent; actual Tailwind classes do the heavy lifting */
+
+/* ── Stat card grid: 1 col → 2 col → 3 col ── */
+.stat-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+}
+
+/* ── Two-col layout ── */
+.two-col {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+/* ── Form grid ── */
+.form-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+
+/* ── Topbar title: hide on very small ── */
+@media (max-width: 360px) {
+    .topbar-title {
+        display: none;
+    }
+}
+
+/* ── Action buttons row: stack on mobile ── */
+.actions-row {
+    @apply flex flex-wrap items-center gap-2;
+}

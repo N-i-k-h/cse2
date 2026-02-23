@@ -1,0 +1,11 @@
+{
+  "_id": "699be3561271a699a0df0e0f",
+  "name": "Nikhil Kashyap k N",
+  "email": "nikhillkashyapkn+dup@gmail.com",
+  "password": "$2b$10$XxVINUGJ2G0TTi36oKVymOh3LkF/clgr0247jVMGlNizxIrKyichy",
+  "role": "staff",
+  "department": "CSE",
+  "isActive": true,
+  "createdAt": "2026-02-23T05:19:18.167Z",
+  "__v": 0
+}

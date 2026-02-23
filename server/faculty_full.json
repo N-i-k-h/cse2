@@ -1,0 +1,50 @@
+[
+  {
+    "education": {
+      "highestDegree": "M.Tech",
+      "experience": 2
+    },
+    "_id": "699bc08d73deb9fbb7b00275",
+    "user": "699bc08d73deb9fbb7b00273",
+    "facultyId": "2222",
+    "firstName": "Nikhil",
+    "lastName": "N",
+    "designation": "Assistant Professor",
+    "phone": "9380371641",
+    "subjects": [],
+    "createdAt": "2026-02-23T02:50:53.786Z",
+    "__v": 0
+  },
+  {
+    "education": {
+      "highestDegree": "PhD",
+      "experience": 16
+    },
+    "_id": "699bc69bdb7fe4a6aec7d4f9",
+    "user": "699bc69bdb7fe4a6aec7d4f7",
+    "facultyId": "123",
+    "firstName": "HOD",
+    "lastName": "cse",
+    "designation": "Professor",
+    "phone": "093803716",
+    "subjects": [],
+    "createdAt": "2026-02-23T03:16:43.716Z",
+    "__v": 0
+  },
+  {
+    "education": {
+      "highestDegree": "M.Tech",
+      "experience": 4
+    },
+    "_id": "699be3561271a699a0df0e11",
+    "user": "699be3561271a699a0df0e0f",
+    "facultyId": "444",
+    "firstName": "Nikhil",
+    "lastName": "Kashyap k N",
+    "designation": "Assistant Professor",
+    "phone": "9380371641",
+    "subjects": [],
+    "createdAt": "2026-02-23T05:19:18.267Z",
+    "__v": 0
+  }
+]
