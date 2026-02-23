@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { mockClasses, mockStudents, mockStaff } from '../../data/mockData';
 import { useAuth } from '../../context/AuthContext';
 import { Save, AlertCircle } from 'lucide-react';
-import type { Student } from '../../types';
+// import type { Student } from '../../types';
 
 export const MarksEntry = () => {
     const { user } = useAuth();

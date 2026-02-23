@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Check, X, User, Clock, Calendar, BookOpen, Users } from 'lucide-react';
-import { clsx } from 'clsx';
+// import { clsx } from 'clsx';
 import { studentService } from '../../services/studentService';
 import { facultyService } from '../../services/facultyService';
 import { timetableService } from '../../services/timetableService';

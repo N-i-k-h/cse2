@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Alias not working
-// import { Badge } from '@/components/ui/badge';
 import { Clock, MapPin, User, BookOpen, CalendarDays } from 'lucide-react';
 import type { TimetablePeriod } from '../../types';
 import { timetableService } from '../../services/timetableService';
-import { useAuth } from '../../context/AuthContext';
 
-// Basic UI Components to replace missing ones or we should use relative imports if files exist
-// Assuming files don't exist in standard 'ui' folder as per previous 'AdminTimetable' fix which removed them.
-// We will create simple HTML equivalents here to ensure stability.
-
+// Basic UI Components to replace missing ones
 const Card = ({ children, className }: any) => <div className={`bg-white rounded-xl shadow-sm border ${className}`}>{children}</div>;
 const CardHeader = ({ children, className }: any) => <div className={`p-6 ${className}`}>{children}</div>;
 const CardTitle = ({ children, className }: any) => <h3 className={`font-semibold ${className}`}>{children}</h3>;
@@ -27,13 +21,12 @@ interface TimetableCardProps {
 }
 
 const TimetableCard: React.FC<TimetableCardProps> = ({ role, classId, facultyId }) => {
+    // @ts-ignore
     const [schedule, setSchedule] = useState<TimetablePeriod[]>([]);
     const [currentPeriod, setCurrentPeriod] = useState<TimetablePeriod | null>(null);
     const [nextPeriod, setNextPeriod] = useState<TimetablePeriod | null>(null);
     const [loading, setLoading] = useState(true);
 
-    // Time slots mapping (Example specific to SIET CSE)
-    // You might want to move this to a config or fetch from backend
     const timeSlots = [
         { period: 1, start: '09:00', end: '10:00' },
         { period: 2, start: '10:00', end: '11:00' },
@@ -48,7 +41,6 @@ const TimetableCard: React.FC<TimetableCardProps> = ({ role, classId, facultyId 
 
     useEffect(() => {
         fetchSchedule();
-        // Refresh every 5 minutes to keep "Current Period" updated
         const interval = setInterval(fetchSchedule, 5 * 60 * 1000);
         return () => clearInterval(interval);
     }, [classId, facultyId]);
@@ -76,7 +68,6 @@ const TimetableCard: React.FC<TimetableCardProps> = ({ role, classId, facultyId 
         const currentDay = days[now.getDay()];
         const currentTime = now.getHours() * 60 + now.getMinutes();
 
-        // Filter for today
         const todaysClasses = data.filter(p => p.day === currentDay).sort((a, b) => a.period - b.period);
 
         let current: TimetablePeriod | null = null;
@@ -98,13 +89,10 @@ const TimetableCard: React.FC<TimetableCardProps> = ({ role, classId, facultyId 
             }
         }
 
-        // If no next class found today, maybe show first class of tomorrow? (Optional enhancement)
-
         setCurrentPeriod(current);
         setNextPeriod(next);
     };
 
-    // Helper to get time string for a period
     const getPeriodTime = (p: number) => {
         const slot = timeSlots.find(s => s.period === p);
         return slot ? `${slot.start} - ${slot.end}` : `Period ${p}`;
@@ -118,12 +106,10 @@ const TimetableCard: React.FC<TimetableCardProps> = ({ role, classId, facultyId 
         );
     }
 
-    // If no classes today currently or next
     const noActiveClasses = !currentPeriod && !nextPeriod;
 
     return (
         <div className="space-y-6">
-            {/* Current/Next Class Card - "My Day" */}
             <Card className="bg-gradient-to-br from-white to-emerald-50 border-emerald-100 shadow-sm overflow-hidden">
                 <CardHeader className="pb-2 border-b border-emerald-100/50">
                     <div className="flex justify-between items-center">

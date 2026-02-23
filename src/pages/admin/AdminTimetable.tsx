@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { classService } from '../../services/classService';
 import { timetableService } from '../../services/timetableService';
 import { facultyService } from '../../services/facultyService';
 import { Modal } from '../../components/ui/Modal';
-import { Plus, Edit2, Loader2, Save, Calendar, BookOpen, Clock, MapPin, User } from 'lucide-react';
+import { Plus, Loader2, Save, Calendar, BookOpen, MapPin, User } from 'lucide-react';
 import type { ClassSection, TimetablePeriod, Staff } from '../../types';
 
 export const AdminTimetable = () => {
@@ -157,11 +157,11 @@ export const AdminTimetable = () => {
             {/* Notifications */}
             {notification && (
                 <div className={`fixed top-20 right-4 z-[100] max-w-sm w-full bg-white rounded-2xl shadow-2xl border-l-4 p-4 animate-in fade-in slide-in-from-right-4 duration-300 ${notification.type === 'success' ? 'border-green-500' :
-                        notification.type === 'warning' ? 'border-amber-500' : 'border-red-500'
+                    notification.type === 'warning' ? 'border-amber-500' : 'border-red-500'
                     }`}>
                     <div className="flex items-start gap-4">
                         <div className={`p-2 rounded-xl shrink-0 ${notification.type === 'success' ? 'bg-green-50 text-green-600' :
-                                notification.type === 'warning' ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-600'
+                            notification.type === 'warning' ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-600'
                             }`}>
                             {notification.type === 'success' ? <Save size={20} /> : <Loader2 size={20} />}
                         </div>
